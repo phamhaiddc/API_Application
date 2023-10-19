@@ -20,8 +20,6 @@ pipeline {
             }
         }
 
-
-
         stage('Publish') {
             steps {
                 script {
@@ -30,6 +28,15 @@ pipeline {
                 }
             }
         }
+        stage('Example') {
+            steps {
+                script {
+                    withCredentials([string(credentialsId: 'jenkins_1', variable: 'SECRET_VALUE')]) {
+                    bat "echo Secret Value: %SECRET_VALUE%"                    
+                }
+            }
+        }
+            
     }
 
     post {
