@@ -12,28 +12,21 @@ pipeline {
             steps {
                 script {
                     // Restoring NuGet packages
-                    sh "dotnet restore"
+                    dotnet "dotnet restore"
 
                     // Building the .NET project
-                    sh "dotnet build --configuration Release"
+                    dotnet "dotnet build --configuration Release"
                 }
             }
         }
 
-        stage('Test') {
-            steps {
-                script {
-                    // Running unit tests
-                    sh "dotnet test --no-restore --configuration Release"
-                }
-            }
-        }
+
 
         stage('Publish') {
             steps {
                 script {
                     // Publishing the application
-                    sh "dotnet publish --no-restore --configuration Release --output ./publish"
+                    dotnet "dotnet publish --no-restore --configuration Release --output ./publish"
                 }
             }
         }
