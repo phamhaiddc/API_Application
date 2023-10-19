@@ -33,6 +33,7 @@ pipeline {
                 script {
                     withCredentials([string(credentialsId: 'jenkins_1', variable: 'SECRET_VALUE')]) {
                     bat "echo Secret Value: %SECRET_VALUE%"                    
+                    }
                 }
             }
         }
