@@ -12,10 +12,10 @@ pipeline {
             steps {
                 script {
                     // Restoring NuGet packages
-                    dotnet "dotnet restore"
+                        bat 'dotnet restore'
+                        bat 'dotnet build'
 
                     // Building the .NET project
-                    dotnet "dotnet build --configuration Release"
                 }
             }
         }
@@ -26,7 +26,7 @@ pipeline {
             steps {
                 script {
                     // Publishing the application
-                    dotnet "dotnet publish --no-restore --configuration Release --output ./publish"
+                    bat 'dotnet publish --no-restore --configuration Release --output ./publish'
                 }
             }
         }
